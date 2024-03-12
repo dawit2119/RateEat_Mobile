@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>961357186589-suf8d2mqi4nvu65qeid6rede71n2noh9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.961357186589-suf8d2mqi4nvu65qeid6rede71n2noh9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>961357186589-5rvqj8olfg97hoeplis45esbe0raocnq.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCmSWhYcFcmKirUICY_Wdwt8nXYJC7p0dk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>961357186589</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.a2sv.rateeatMobile</string>
+	<key>PROJECT_ID</key>
+	<string>rateeat-400506</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rateeat-400506.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:961357186589:ios:4943af4c71c377581868f4</string>
+</dict>
+</plist>

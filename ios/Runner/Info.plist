@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+		<true/>
+		<key>CFBundleIconName</key>
+		<string>AppIcon</string>
+		<key>CFBundleDevelopmentRegion</key>
+		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>CFBundleDisplayName</key>
+		<string>RateEat</string>
+		<key>CFBundleExecutable</key>
+		<string>$(EXECUTABLE_NAME)</string>
+		<key>CFBundleIdentifier</key>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<key>CFBundleInfoDictionaryVersion</key>
+		<string>6.0</string>
+		<key>CFBundleName</key>
+		<string>RateEat</string>
+		<key>CFBundlePackageType</key>
+		<string>APPL</string>
+		<key>CFBundleShortVersionString</key>
+		<string>$(FLUTTER_BUILD_NAME)</string>
+		<key>CFBundleSignature</key>
+		<string>????</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>Allow "RateEat" to use your location</string>
+
+		<!-- THIS IS THE COMBINED CFBundleURLTypes SECTION -->
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<!-- Google Sign-In URL Scheme -->
+					<string>com.googleusercontent.apps.961357186589-suf8d2mqi4nvu65qeid6rede71n2noh9</string>
+				</array>
+			</dict>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<!-- Sharing Media URL Scheme -->
+					<string>SharingMedia-$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+				</array>
+			</dict>
+		</array>
+		<!-- END OF COMBINED CFBundleURLTypes SECTION -->
+
+		<key>CFBundleVersion</key>
+		<string>$(FLUTTER_BUILD_NUMBER)</string>
+		<key>LSRequiresIPhoneOS</key>
+		<true/>
+		<key>UILaunchStoryboardName</key>
+		<string>LaunchScreen</string>
+		<key>UIMainStoryboardFile</key>
+		<string>Main</string>
+		<key>GIDClientID</key>
+		<string>961357186589-v040h70tk1jj7omf39h9kd2pbtn3cq17.apps.googleusercontent.com</string>
+		<key>GoogleMapsApiKey</key>
+		<string>AIzaSyAKA9gCfSkN1u8SgFH9ZT2iwvwUY4glSp0</string>
+		<!-- Note: LSRequiresIPhoneOS is duplicated as well, remove one -->
+		<!-- <key>LSRequiresIPhoneOS</key>
+		<true/> -->
+		<key>NSCameraUsageDescription</key>
+		<string>Our app needs access to your camera to capture photos and videos.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>This app needs access to location when in the background.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs access to location when open.</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Our app needs access to your microphone to record videos.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Our app needs access to your photo library to upload images.</string>
+		<key>UIApplicationSupportsIndirectInputEvents</key>
+		<true/>
+		<!-- Note: UILaunchStoryboardName is duplicated as well, remove one -->
+		<!-- <key>UILaunchStoryboardName</key>
+		<string>LaunchScreen</string> -->
+		<!-- Note: UIMainStoryboardFile is duplicated as well, remove one -->
+		<!-- <key>UIMainStoryboardFile</key>
+		<string>Main</string> -->
+		<key>UIStatusBarHidden</key>
+		<false/>
+		<key>UISupportedInterfaceOrientations</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UISupportedInterfaceOrientations~ipad</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+		   <string>UIInterfaceOrientationPortraitUpsideDown</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UIViewControllerBasedStatusBarAppearance</key>
+		<false/>
+		<key>io.flutter.embedded_views_preview</key>
+		<true/>
+		<!-- Handle image and video shares from other apps -->
+		<key>AppGroupId</key>
+		<string>$(CUSTOM_GROUP_ID)</string>
+
+		<!-- Note: NSPhotoLibraryUsageDescription is duplicated as well, remove one -->
+		<!-- <key>NSPhotoLibraryUsageDescription</key>
+		<string>To upload photos, please allow permission to access your photo library.</string> -->
+	</dict>
+</plist>

@@ -1,0 +1,11 @@
+export './edit_profile_use_case.dart';
+export './get_user_favorites_use_case.dart';
+export './get_user_reviews_use_case.dart';
+export './get_user_use_case.dart';
+export 'add_item_recommendation_use_case.dart';
+export 'add_restaurant_recommendation_use_case.dart';
+export 'get_user_recommendation_use_case.dart';
+export 'get_current_user_followers_use_case.dart';
+export 'get_current_user_followings_use_case.dart';
+export 'update_user_preference_use_case.dart';
+export 'get_user_preference_use_case.dart';

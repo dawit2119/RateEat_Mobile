@@ -1,0 +1,25 @@
+ {
+    "user": {
+        "id": "1",
+        "telegram_id": "1",
+        "facebook_id": "1",
+        "username": "John",
+        "first_name": "John",
+        "last_name": "Doe",
+        "date_of_birth": "2013-04-20 12:00:00",
+        "email": "doe@example.com",
+        "gender": "male",
+        "role_id": "1",
+        "phone_number": "1234567890",
+        "image": "http://example.com/doe.jpg",
+        "createdAt":"2013-04-20 12:00:00",
+        "updatedAt":"2013-04-20 12:00:00",
+        "token": "token123",
+        "verified": 2
+    },
+    "incentive": {
+        "id": "1",
+        "all_time_total": 100,
+        "current_total": 100
+    }
+}

@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "961357186589",
+    "project_id": "rateeat-400506",
+    "storage_bucket": "rateeat-400506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961357186589:android:932cd31ff14a8a201868f4",
+        "android_client_info": {
+          "package_name": "com.example.rateeat_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961357186589-5rvqj8olfg97hoeplis45esbe0raocnq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rateeat_mobile",
+            "certificate_hash": "288e16e2bc61f7881a75f195974fb4d863ff955c"
+          }
+        },
+        {
+          "client_id": "961357186589-e9bv2jbjbgcq4e23g8qlfrc9770im9f1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1nHj7_k2uWMWYcqax81ZlgNad111dH_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961357186589-e9bv2jbjbgcq4e23g8qlfrc9770im9f1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "961357186589-1sgolf4hvbcoa742stth2mq64v4dqrah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rateeatMobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961357186589:android:ee1d0693d8563e361868f4",
+        "android_client_info": {
+          "package_name": "org.a2sv.rateeat_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961357186589-am98vd00ajo770f5b0l0reftlem3pg7b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.a2sv.rateeat_mobile",
+            "certificate_hash": "d6384bb27c3938826a475ad4150a9e7ad801429a"
+          }
+        },
+        {
+          "client_id": "961357186589-ov677mpdqevdplg5r4243c78n28t82ju.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.a2sv.rateeat_mobile",
+            "certificate_hash": "288e16e2bc61f7881a75f195974fb4d863ff955c"
+          }
+        },
+        {
+          "client_id": "961357186589-e9bv2jbjbgcq4e23g8qlfrc9770im9f1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1nHj7_k2uWMWYcqax81ZlgNad111dH_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961357186589-e9bv2jbjbgcq4e23g8qlfrc9770im9f1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "961357186589-1sgolf4hvbcoa742stth2mq64v4dqrah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rateeatMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

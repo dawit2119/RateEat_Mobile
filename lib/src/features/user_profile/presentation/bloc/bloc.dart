@@ -1,0 +1,9 @@
+export 'edit_profile/edit_profile.dart';
+export 'get_user_profile_bloc.dart';
+export 'user_favorites_bloc.dart';
+export 'user_review_bloc.dart';
+export 'others_recommendation/other_recommendation_bloc.dart';
+export 'recommendation/recommendation_bloc.dart';
+export 'add_recommendation/add_recommendation_bloc.dart';
+export 'following_list/following_list.dart';
+export 'followers_list/followers_list.dart';

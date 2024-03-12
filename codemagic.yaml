@@ -1,0 +1,230 @@
+workflows:
+  # Development workflow for feature branches
+  development:
+    name: Development Build
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+        - ios/Pods
+    environment:
+      android_signing:
+        - keystore_reference
+      ios_signing:
+        distribution_type: development
+        bundle_identifier: org.a2sv.rateeat_mobile
+      vars:
+        FLUTTER_VERSION: "3.24.3"
+        XCODE_WORKSPACE: "Runner.xcworkspace"
+        XCODE_SCHEME: "Runner"
+        BUNDLE_ID: "org.a2sv.rateeat_mobile"
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+        CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+        GOOGLE_SERVICES_JSON: Encrypted(...)
+        GOOGLE_SERVICES_PLIST: Encrypted(...)
+        BASE_URL: Encrypted(...)
+        API_KEY: Encrypted(...)
+        GOOGLE_API_KEY: Encrypted(...)
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: 'develop'
+          include: true
+          source: true
+        - pattern: 'feature/*'
+          include: true
+          source: true
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Install CocoaPods
+        script: |
+          cd ios && pod install --repo-update && cd ..
+      - name: Set up environment variables
+        script: |
+          echo "BASE_URL=$BASE_URL" > .env
+          echo "API_KEY=$API_KEY" >> .env
+          echo "GOOGLE_API_KEY=$GOOGLE_API_KEY" >> .env
+      - name: Set up Firebase configuration files
+        script: |
+          echo $GOOGLE_SERVICES_JSON | base64 --decode > android/app/google-services.json
+          echo $GOOGLE_SERVICES_PLIST | base64 --decode > ios/Runner/GoogleService-Info.plist
+      - name: Flutter analyze
+        script: flutter analyze
+      - name: Flutter test
+        script: flutter test
+      # Optional: Advanced static analysis (requires dart_code_metrics dependency)
+      # - name: Dart code metrics
+      #   script: dart run dart_code_metrics:metrics lib
+      - name: Build APK
+        script: flutter build apk --debug
+      - name: Build iOS
+        script: flutter build ios --debug --no-codesign
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+      - build/app/outputs/mapping.txt
+      - build/ios/iphoneos/Runner.app
+      - flutter_drive.log
+    publishing:
+      email:
+        recipients:
+          - rate-eat@a2sv.org
+        notify:
+          success: false
+          failure: true
+
+  # Production workflow for main branch
+  production:
+    name: Production Build
+    instance_type: mac_mini_m1
+    max_build_duration: 120
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+        - ios/Pods
+    environment:
+      android_signing:
+        - keystore_reference
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: org.a2sv.rateeat_mobile
+      vars:
+        FLUTTER_VERSION: "3.24.3"
+        XCODE_WORKSPACE: "Runner.xcworkspace"
+        XCODE_SCHEME: "Runner"
+        BUNDLE_ID: "org.a2sv.rateeat_mobile"
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+        CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+        GOOGLE_SERVICES_JSON: Encrypted(...)
+        GOOGLE_SERVICES_PLIST: Encrypted(...)
+        BASE_URL: Encrypted(...)
+        API_KEY: Encrypted(...)
+        GOOGLE_API_KEY: Encrypted(...)
+        GOOGLE_PLAY_SERVICE_ACCOUNT_KEY: Encrypted(...)
+    triggering:
+      events:
+        - push
+        - tag
+      branch_patterns:
+        - pattern: 'main'
+          include: true
+          source: true
+        - pattern: 'release/*'
+          include: true
+          source: true
+      tag_patterns:
+        - pattern: 'v*'
+          include: true
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Install CocoaPods
+        script: |
+          cd ios && pod install --repo-update && cd ..
+      - name: Set up environment variables
+        script: |
+          echo "BASE_URL=$BASE_URL" > .env
+          echo "API_KEY=$API_KEY" >> .env
+          echo "GOOGLE_API_KEY=$GOOGLE_API_KEY" >> .env
+      - name: Set up Firebase configuration files
+        script: |
+          echo $GOOGLE_SERVICES_JSON | base64 --decode > android/app/google-services.json
+          echo $GOOGLE_SERVICES_PLIST | base64 --decode > ios/Runner/GoogleService-Info.plist
+      - name: Flutter analyze
+        script: flutter analyze
+      - name: Flutter test
+        script: flutter test
+      - name: Build AAB
+        script: flutter build appbundle --release
+      - name: Build iOS
+        script: |
+          flutter build ios --release
+          xcode-project use-profiles
+      - name: Build iOS IPA
+        script: |
+          xcode-project build-ipa \
+            --workspace ios/Runner.xcworkspace \
+            --scheme Runner
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+      - build/app/outputs/mapping.txt
+      - build/ios/ipa/*.ipa
+      - flutter_drive.log
+    publishing:
+      google_play:
+        credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_KEY
+        track: internal
+        submit_as_draft: true
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        beta_groups:
+          - App Store Connect Users
+        submit_to_app_store: false   # safer to keep off initially
+        submit_as_draft: true        # added for safety
+      email:
+        recipients:
+          - rate-eat@a2sv.org
+        notify:
+          success: true
+          failure: true
+
+  # Testing workflow for pull requests
+  testing:
+    name: Testing & Code Quality
+    instance_type: mac_mini_m1
+    max_build_duration: 40
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+    environment:
+      vars:
+        FLUTTER_VERSION: "3.24.3"
+        BASE_URL: Encrypted(...)
+        API_KEY: Encrypted(...)
+        GOOGLE_API_KEY: Encrypted(...)
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: '*'
+          include: true
+          source: true
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Set up environment variables
+        script: |
+          echo "BASE_URL=$BASE_URL" > .env
+          echo "API_KEY=$API_KEY" >> .env
+          echo "GOOGLE_API_KEY=$GOOGLE_API_KEY" >> .env
+      - name: Flutter analyze
+        script: flutter analyze
+      - name: Flutter test
+        script: flutter test --coverage
+      - name: Check formatting
+        script: flutter format --set-exit-if-changed .
+      # Optional: Advanced static analysis
+      # - name: Dart code metrics
+      #   script: dart run dart_code_metrics:metrics lib
+    artifacts:
+      - coverage/lcov.info
+    publishing:
+      email:
+        recipients:
+          - rate-eat@a2sv.org
+        notify:
+          success: false
+          failure: true
